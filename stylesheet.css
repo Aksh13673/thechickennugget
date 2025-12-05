@@ -499,6 +499,33 @@ html, body {
 }
 
 /* ---------------- BRAND HEADER ------------------ */
+/* .site-header {
+  text-align:center;
+  padding-top:12px;
+}
+.logos {
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  margin:20px auto 6px;
+  object-fit:cover;
+}
+.underline-wide {
+  border-bottom:4px solid #000;
+  display:inline-block;
+  padding-bottom:4px;
+}
+.titles {
+  font-family:"Playfair Display", serif;
+  font-size:clamp(28px, 6vw, 80px);
+  margin-top:6px;
+}
+.subtitle {
+  font-family:"Playfair Display SC", serif;
+  letter-spacing:4px;
+  margin-top:6px;
+} */
+/* ---------------- BRAND HEADER ------------------ */
 .site-header {
   text-align:center;
   padding-top:12px;
@@ -740,6 +767,7 @@ html, body {
     line-height: inherit !important;
     font-weight: inherit !important;
 }
+
 
 
 
