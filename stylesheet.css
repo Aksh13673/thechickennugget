@@ -590,14 +590,14 @@ html, body {
 
 /* ---------------- DROP CAP ------------------ */
 .main p:first-of-type:first-letter {
-  float:left;
-  font-size:72px;
-  padding-right:10px;
-  padding-top:6px;
-  color:var(--accent);
-  font-weight:700;
-  line-height:0.8;
+  float: none;
+  font-size: inherit;
+  padding: 0;
+  color: inherit;
+  font-weight: inherit;
+  line-height: inherit;
 }
+
 
 /* ---------------- PULLQUOTE ------------------ */
 .pull {
@@ -711,15 +711,15 @@ html, body {
 }
 
 /* Disable all drop caps on the site except inside .paper .main */
-p::first-letter {
+/* p::first-letter {
     float: none;
     font-size: inherit;
     padding: 0;
     line-height: inherit;
-}
+} */
 
 /* Restore the intended drop cap ONLY for newspaper */
-.paper .main p:first-of-type:first-letter {
+/* .paper .main p:first-of-type:first-letter {
     float: left;
     font-size: 72px;
     padding-right: 10px;
@@ -727,5 +727,6 @@ p::first-letter {
     color: var(--accent);
     font-weight: 700;
     line-height: 0.8;
-}
+} */
+
 
