@@ -729,4 +729,18 @@ html, body {
     line-height: 0.8;
 } */
 
+/* REMOVE ALL DROP-CAP EFFECTS EVERYWHERE */
+.main p:first-of-type:first-letter,
+.paper .main p:first-of-type:first-letter,
+p::first-letter {
+    float: none !important;
+    font-size: inherit !important;
+    padding: 0 !important;
+    line-height: inherit !important;
+    color: inherit !important;
+    font-weight: inherit !important;
+}
+
+
+
 
