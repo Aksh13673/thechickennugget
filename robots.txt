@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aksh13673.github.io/thechickennugget/sitemap.xml
