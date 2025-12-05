@@ -1,0 +1,712 @@
+:root{
+  --accent: #ffbf00;   /* nugget yellow */
+  --accent-dark: #e0a700;
+  --text-dark: #111;
+  --muted: #f2f2f2;
+  --nav-bg: #000;
+}
+
+/* RESET */
+*{box-sizing:border-box}
+html,body{height:100%}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text-dark);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* HEADINGS */
+h1 {
+  text-align: center;
+  font-family: "Playfair Display SC", serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.underline-wide {
+  border-bottom: 4px solid #000;
+  padding-bottom: 4px;
+  width: 100%;
+  display:inline-block;
+  margin-top: 6px;
+}
+
+.titles {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 6vw, 80px);
+  text-align: center;
+  word-break: break-word;
+  margin: 6px 0 0 0;
+}
+
+.subtitle {
+  text-align: center;
+  font-family: "Playfair Display SC", serif;
+  letter-spacing: 4px;
+  margin-top: 6px;
+  margin-bottom: 14px;
+}
+
+/* LOGO / HEADER */
+.site-header { padding-top: 12px; text-align:center }
+.logos {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin: 20px auto 6px auto;
+  display: block;
+  object-fit: cover;
+  border: 2px solid rgba(0,0,0,0.04);
+}
+
+/* NAVBAR */
+.custom-nav{
+  background: var(--nav-bg) !important;
+  padding: 12px 20px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  z-index: 40;
+}
+.navbar-toggler{ border: none; }
+.navbar-toggler-icon{ filter: invert(1); background-size: 100% 100%; }
+
+/* nav links */
+.navbar-nav .nav-link{
+  font-size: 18px;
+  transition: color .25s ease, transform .18s ease;
+}
+.navbar-nav .nav-link:hover{ color: #ff3b3b !important; transform: translateY(-2px); }
+
+/* dropdown */
+.dropdown-menu-dark{ background: #111; border: none; padding: 8px 0; }
+.dropdown-item{ color: #f5f5f5; }
+
+/* CAROUSEL */
+.carousel-item{
+  position: relative;
+  overflow: hidden;
+}
+
+/* HERO WRAPPER: use --vh variable for robust mobile height */
+.hero-wrapper {
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--accent);
+  position: relative;
+}
+
+/* soft dimmer */
+.hero-wrapper::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.09), rgba(0,0,0,0.18));
+  z-index:2;
+  pointer-events:none;
+}
+
+/* hero image behaviour */
+.hero-img{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index:0;
+  transform-origin: center;
+  transition: transform 10s linear;
+  will-change: transform;
+}
+
+/* subtle slow zoom (reduced for prefers-reduced-motion users) */
+@media (prefers-reduced-motion: no-preference) {
+  .carousel .active .hero-img { transform: scale(1); animation: slowZoom 16s ease-in-out infinite; }
+  @keyframes slowZoom { 0%{transform:scale(1)} 50%{transform:scale(1.03)} 100%{transform:scale(1)} }
+}
+
+/* overlay (keeps hero text readable) */
+.hero-overlay{ position:absolute; inset:0; z-index:1; pointer-events:none; }
+
+/* CAPTION */
+.hero-caption{
+  position:absolute; inset:0; z-index:3;
+  display:flex !important; flex-direction:column; justify-content:center; align-items:center;
+  padding: 0 20px; text-align:center;
+  animation: captionFade .8s ease both;
+}
+@keyframes captionFade { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform:none;} }
+
+.hero-caption h1{
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 5vw, 72px);
+  color: #fff; text-shadow: 0 3px 6px rgba(0,0,0,0.35);
+  margin-bottom: 12px;
+}
+.hero-caption p{
+  font-size: clamp(14px, 2vw, 20px);
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+/* CTA */
+.btn{ background-color: #028a2e; color: #fff; border-radius:6px; padding:10px 22px; font-weight:600; text-decoration:none; }
+
+/* INDICATORS */
+.carousel-indicators [data-bs-target]{
+  width:12px; height:12px; border-radius:50%; opacity:.6; background: #fff; transition: transform .18s ease;
+}
+.carousel-indicators .active{ background: #ff3b3b; transform: scale(1.15); opacity:1; }
+
+/* CONTROLS */
+.carousel-control-prev-icon, .carousel-control-next-icon{ filter: invert(1); }
+
+.video-box {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* OPTIONAL: style the text nicely */
+.about-title {
+  font-family: "Playfair Display", serif;
+  font-size: 4.2rem;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 3rem;
+  }
+}
+
+
+.about-text {
+  color: black;
+  font-family: "Playfair Display SC", serif;
+  font-size: 2rem;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+.site-footer{ 
+  text-align:center; 
+  padding:28px 16px;
+   color:#444;
+    margin-top: 24px;
+   }
+
+/* SMALL SCREENS: tidy spacing and stack */
+@media (max-width: 900px) {
+  .titles{ font-size: clamp(28px, 10vw, 56px); }
+  .subtitle{ font-size: 12px; }
+  .navbar-nav .nav-link{ font-size: 16px; padding: 8px 6px; }
+  .hero-caption h1{ font-size: clamp(22px, 7vw, 40px); }
+  .hero-caption p{ font-size: 14px; }
+  .logos { height: 56px; width:56px; }
+}
+
+/* MOBILE: ensure nav items wrap nicely when collapsed */
+@media (max-width: 576px) {
+  .custom-nav { padding: 10px 12px; }
+  .navbar-nav { gap: 8px; }
+}
+
+/* small accessibility & focus states */
+a:focus, button:focus { outline: 3px solid rgba(255,191,0,0.24); outline-offset: 2px; border-radius:6px; }
+
+/* reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .carousel .active .hero-img, .hero-caption { animation: none !important; transition: none !important; }
+}
+
+/* tv */
+
+/* ---------------------------
+   TV OUTER WRAPPER
+--------------------------- */
+.tv-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px auto;
+  width: 100%;
+}
+
+/* ---------------------------
+   TV ANTENNA
+--------------------------- */
+.tv-antenna {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: -10px;
+}
+
+.tv-antenna span {
+  width: 3px;
+  height: 70px;
+  background: #555;
+  transform-origin: bottom;
+  border-radius: 3px;
+}
+
+.tv-antenna span:first-child { transform: rotate(-15deg); }
+.tv-antenna span:last-child { transform: rotate(15deg); }
+
+/* ---------------------------
+   TV FRAME
+--------------------------- */
+.tv-frame {
+  background: #1e1e1e;
+  padding: 25px;
+  border-radius: 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  width: 90%;
+  max-width: 850px;
+}
+
+/* ---------------------------
+   TV SCREEN (16:9)
+--------------------------- */
+.tv-screen {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ===========================
+      CARD GRID PAGES
+=========================== */
+.tv-pages { flex: 1; overflow: hidden; }
+.tv-page { display: none; height: 100%; }
+.tv-page.active { display: grid; }
+
+/* ===========================
+      CARD GRID
+=========================== */
+.tv-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.tv-card-grid img { width: 100%; height: 120px; object-fit: cover; }
+
+.tv-card {
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform .2s;
+}
+
+.tv-card:hover { transform: scale(1.03); }
+
+.tv-card h4 {
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Playfair Display", serif;
+}
+
+/* ===========================
+      PAGINATION BUTTONS
+=========================== */
+.tv-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.tv-pagination button {
+  background: #ffbf00;
+  border: none;
+  padding: 6px 14px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tv-pagination button:hover { background: #d9a400; }
+
+#pageIndicator { color: #fff; }
+
+/* ===========================
+      MOBILE
+=========================== */
+@media (max-width: 600px) {
+  .tv-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  .tv-antenna span { height: 45px; }
+  .tv-card img { height: 90px; }
+  .tv-frame { padding: 18px; }
+}
+
+/* Hide all pages */
+.tv-page {
+    display: none;
+}
+
+/* Show only the active page */
+.tv-page.active {
+    display: grid !important;
+}
+
+/* Smooth fade effect when switching pages */
+.tv-page {
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+.tv-page.active {
+    opacity: 1;
+}
+
+
+
+/* Make image responsive and properly scaled */
+.wantedchick {
+  width: 100%;
+  max-width: 500px; /* prevents oversized image */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Transparent box */
+.finance-box {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: black; /* change to black */
+}
+.finance-box h2,
+.finance-box h3 {
+  font-family: "Playfair Display SC", serif;
+  font-size: 40px ;
+  color: black; /* change to black */
+}
+
+/* CARD CONTAINER SPACING */
+/* CARD STYLE */
+.card {
+    border: 2px solid black;      /* black border */
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* HOVER ANIMATION */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* CARD IMAGE — FIX STRETCHING */
+.card-img-top {
+    width: 100%;
+    height: auto;                 /* prevents stretching */
+    aspect-ratio: 16/9;           /* keeps medium-sized shape */
+    object-fit: cover;            /* crops nicely instead of stretching */
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+/* IMAGE ZOOM ON HOVER (subtle) */
+.card:hover .card-img-top {
+    transform: scale(1.03);
+}
+
+/* CARD TEXT */
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.card-text {
+    color: #555;
+}
+
+/* RESPONSIVE TWEAKS */
+@media (max-width: 768px) {
+    .card-img-top {
+        aspect-ratio: 16/10;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-img-top {
+        aspect-ratio: 4/3;
+    }
+}
+
+/* ---------------- ROOT COLORS ------------------ */
+/* :root {
+  --paper:#f3ead6;
+  --ink:#1b1b17;
+  --sep:#c9b991;
+  --accent:#6b4f2e;
+  --max-width:900px;
+  --gutter:24px;
+} */
+
+/* ---------------- BODY ------------------ */
+html, body {
+  margin:0;
+  padding:0;
+  background:white !important;
+  font-family: Georgia, "Times New Roman", serif;
+  color:var(--ink);
+  line-height:1.45;
+  -webkit-text-size-adjust:100%;
+}
+
+/* ---------------- PAPER SECTION ------------------ */
+.paper {
+  max-width:var(--max-width);
+  margin:40px auto;
+  padding:28px 28px 48px;
+  background:linear-gradient(#fbf3de, #f4ead1 60%);
+  border:1px solid rgba(0,0,0,0.06);
+  box-shadow:0 8px 30px rgba(10,10,10,0.12),
+             inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* ---------------- BRAND HEADER ------------------ */
+.site-header {
+  text-align:center;
+  padding-top:12px;
+}
+.logos {
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  margin:20px auto 6px;
+  object-fit:cover;
+}
+.underline-wide {
+  border-bottom:4px solid #000;
+  display:inline-block;
+  padding-bottom:4px;
+}
+.titles {
+  font-family:"Playfair Display", serif;
+  font-size:clamp(28px, 6vw, 80px);
+  margin-top:6px;
+}
+.subtitle {
+  font-family:"Playfair Display SC", serif;
+  letter-spacing:4px;
+  margin-top:6px;
+}
+
+/* ---------------- NAVBAR ------------------ */
+.custom-nav {
+  background:#000 !important;
+  padding:12px 20px;
+}
+.navbar-nav .nav-link:hover {
+  color:#ff3b3b !important;
+}
+
+/* ---------------- NEWSPAPER MASTHEAD ------------------ */
+.mast {
+  text-align:center;
+  margin-bottom:18px;
+  border-bottom:2px solid var(--sep);
+  padding-bottom:8px;
+}
+.mast h1 {
+  margin:0;
+  font-size:clamp(28px, 5vw, 44px);
+  color:var(--accent);
+  font-weight:700;
+}
+.mast .lead {
+  font-size:12px;
+  margin-top:6px;
+  font-variant:small-caps;
+}
+
+/* ---------------- META ------------------ */
+.meta {
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:6px;
+  font-size:12px;
+  margin-top:10px;
+  border-bottom:1px dashed rgba(0,0,0,0.06);
+  padding-bottom:10px;
+}
+
+/* ---------------- CONTENT COLUMNS ------------------ */
+.columns {
+  display:grid;
+  grid-template-columns:1fr 300px;
+  gap:var(--gutter);
+  margin-top:18px;
+}
+
+.main {
+  column-count:2;
+  column-gap:28px;
+  text-align:justify;
+  font-size:16px;
+}
+
+.main img {
+  width:100%;
+  height:auto;
+  margin:10px 0;
+  break-inside:avoid;
+}
+
+/* ---------------- DROP CAP ------------------ */
+.main p:first-of-type:first-letter {
+  float:left;
+  font-size:72px;
+  padding-right:10px;
+  padding-top:6px;
+  color:var(--accent);
+  font-weight:700;
+  line-height:0.8;
+}
+
+/* ---------------- PULLQUOTE ------------------ */
+.pull {
+  font-style:italic;
+  font-size:18px;
+  margin:18px 0;
+  padding:12px 14px;
+  border-left:4px solid var(--sep);
+  background:#fffdf6;
+  column-span:all;
+}
+
+/* ---------------- SIDEBAR ------------------ */
+.sidebar {
+  background:rgba(255,255,255,0.6);
+  padding:14px;
+  border:1px solid rgba(0,0,0,0.05);
+  font-size:14px;
+}
+.sidebar h3 {
+  font-size:18px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:10px;
+}
+
+/* ---------------- SUBHEADINGS ------------------ */
+.subhead {
+  font-variant:small-caps;
+  font-size:18px;
+  margin-top:16px;
+  border-bottom:1px dashed rgba(0,0,0,0.06);
+  padding-bottom:6px;
+}
+
+/* ---------------- FOOTER ------------------ */
+.note {
+  margin-top:20px;
+  font-size:12px;
+  color:#3b362f;
+  border-top:1px dashed rgba(0,0,0,0.06);
+  padding-top:10px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+/* ---------------- RESPONSIVE ------------------ */
+
+/* Large tablets & below */
+@media (max-width: 880px) {
+  .columns {
+    grid-template-columns:1fr;
+  }
+  .main {
+    column-count:1;
+  }
+  .sidebar {
+    margin-top:20px;
+  }
+}
+
+/* Tablets (700px) */
+@media (max-width: 700px) {
+  .paper {
+    padding:20px;
+  }
+  .mast h1 {
+    font-size:clamp(26px, 6vw, 38px);
+  }
+  .main {
+    font-size:15px;
+  }
+  .main p:first-of-type:first-letter {
+    font-size:60px;
+  }
+}
+
+/* Phones (500px) */
+@media (max-width: 500px) {
+  .titles {
+    font-size:clamp(22px, 8vw, 40px);
+  }
+  .subtitle {
+    letter-spacing:2px;
+  }
+  .main {
+    font-size:14.5px;
+  }
+  .main p:first-of-type:first-letter {
+    font-size:48px;
+  }
+  .pull {
+    font-size:16px;
+    padding:10px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 375px) {
+  .paper {
+    padding:16px;
+  }
+  .mast h1 {
+    font-size:24px;
+  }
+  .main {
+    font-size:14px;
+  }
+}
+
