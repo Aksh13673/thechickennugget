@@ -672,9 +672,9 @@ html, body {
   .main {
     font-size:15px;
   }
-  .main p:first-of-type:first-letter {
+  /* .main p:first-of-type:first-letter {
     font-size:60px;
-  }
+  } */
 }
 
 /* Phones (500px) */
@@ -688,9 +688,9 @@ html, body {
   .main {
     font-size:14.5px;
   }
-  .main p:first-of-type:first-letter {
+  /* .main p:first-of-type:first-letter {
     font-size:48px;
-  }
+  } */
   .pull {
     font-size:16px;
     padding:10px;
@@ -730,16 +730,18 @@ html, body {
 } */
 
 /* REMOVE ALL DROP-CAP EFFECTS EVERYWHERE */
+/* HARD OVERRIDE — REMOVE DROP CAP EVERYWHERE */
 .main p:first-of-type:first-letter,
-.paper .main p:first-of-type:first-letter,
-p::first-letter {
+.paper .main p:first-of-type:first-letter {
     float: none !important;
     font-size: inherit !important;
     padding: 0 !important;
-    line-height: inherit !important;
     color: inherit !important;
+    line-height: inherit !important;
     font-weight: inherit !important;
 }
+
+
 
 
 
