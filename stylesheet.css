@@ -767,17 +767,22 @@ html, body {
     line-height: inherit !important;
     font-weight: inherit !important;
 }
-
+/* FIX NEWSPAPER TITLE ON MOBILE */
 @media (max-width: 600px) {
   .mast h1 {
-    font-size: 40px !important;
-    line-height: 1.05;
+    font-size: 24px !important;   /* smaller + readable */
+    line-height: 1.2;
+    word-break: break-word;       /* prevents overflow */
+    text-align: center;
   }
+
+
 
   .paper {
     margin-top: 20px !important;
   }
 }
+
 
 
 
